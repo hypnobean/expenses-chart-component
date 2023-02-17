@@ -1,0 +1,206 @@
+:root {
+    --cream: hsl(27, 66%, 92%);
+    --soft-red: hsl(10, 79%, 65%);
+    --cyan: hsl(186, 34%, 60%);
+    --dark-brown: hsl(25, 47%, 15%);
+    --medium-brown: hsl(28, 10%, 53%);
+    --very-pale-orange: hsl(33, 100%, 98%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color:var(--cream);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 18px;
+    margin: 0;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    color: var(--dark-brown);
+}
+
+
+.container {
+    height: 100vh;
+    height: 100dvh;
+    margin: 0;
+    display: grid;
+    justify-content: center;
+}
+
+.main-layout {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 1rem;
+    row-gap: 1rem;
+    width: min(95vw, 450px);
+}
+
+.balance {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    background-color: var(--soft-red);
+    padding: 2rem;
+    border-radius: 15px;
+}
+
+.balance p {
+    grid-column: 1;
+    grid-row: 1;
+    color: var(--very-pale-orange);
+}
+
+.balance h3 {
+    grid-column: 1;
+    grid-row: 2;
+    color: var(--very-pale-orange);
+}
+
+.balance img {
+    grid-column: 2;
+    grid-row: span 2;
+}
+
+.spending {
+    grid-column: 2;
+    background-color: var(--very-pale-orange);
+    padding: 2rem 1rem;
+    border-radius: 15px;
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: end;
+}
+
+.spending h3 {
+    grid-column: 1 / span 2;
+}
+
+.graph {
+    grid-column: 1 / span 2;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    color: var(--medium-brown);
+    font-size: 10px;
+    margin: 1rem 0 1rem 0;
+    align-items: end;
+}
+
+
+.graph-bar  {
+    background-color: var(--soft-red);
+    width: 85%;
+    border-radius: 3px;
+    margin-top: 25px;
+    position: relative;
+}
+
+.active {
+    background-color: var(--cyan);
+}
+
+
+
+.graph-bar:hover {
+    background-color: hsla(10, 79%, 65%,0.7);
+}
+
+.active:hover {
+    background-color: hsla(186,34%,60%,0.7);
+}
+
+
+.graph-bar .tooltip-text {
+    background-color: var(--dark-brown);
+    display: block;
+    text-align: center;
+    border-radius: 5px;
+    padding: 6px;
+    color: var(--cream);
+    font-size: 12px;
+    visibility: hidden;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
+    z-index: 99;
+}
+
+.graph-bar:hover .tooltip-text {
+    visibility: visible;
+    opacity: 100%;
+}
+
+
+.day {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+
+.day > div {
+    padding: 5px 0;
+}
+
+hr {
+    border: 0;
+    width: 100%;
+    height: 1px;
+    background-color: var(--cream);
+    grid-column: 1 / span 2;
+    grid-row: 3;
+}
+
+.spending-cell-1 {
+    grid-column: 1;
+    grid-row: 4;
+}
+
+.spending-cell-2 {
+    grid-column: 2;
+    grid-row: 4;
+    text-align: right;
+}
+
+.spending-cell-1 p, .spending-cell-2 p {
+    color: var(--medium-brown);
+}
+
+
+
+.attribution {
+    grid-column: 2;
+    font-size: 11px;
+    text-align: center;
+    grid-row-start: 4; }
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+
+@media screen and (max-width: 350px) {
+
+    .main-layout {
+        width: 95vw;
+        font-size: 75%;
+    }
+
+    .balance {
+        padding: 1rem;
+    }
+
+    .spending {
+        padding: 1rem;
+    }
+
+}
